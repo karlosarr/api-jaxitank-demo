@@ -68,7 +68,8 @@ module.exports = {
        ****************************************************************************/
       // ssl: true
       adapter: mongo,
-      url: 'mongodb://api:q1w2e3r4t5y6@ds129484.mlab.com:29484/api'
+      url:
+        'mongodb://heroku_user:MDeuxgv8F8pDwPC@ds151994.mlab.com:51994/heroku_990bkpbn'
       // url: 'mongodb://root:root@0.0.0.0:27017/user?authSource=admin'
     }
   },
