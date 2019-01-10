@@ -66,7 +66,7 @@ module.exports = {
        * https://sailsjs.com/config/datastores                                     *
        *                                                                           *
        ****************************************************************************/
-      ssl: true,
+      //ssl: true,
       adapter: mongo,
       url:
         'mongodb://heroku_user:MDeuxgv8F8pDwPC@ds151994.mlab.com:51994/heroku_990bkpbn'
