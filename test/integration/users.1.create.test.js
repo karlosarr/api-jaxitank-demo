@@ -20,15 +20,15 @@ describe('Events API', () => {
               '| CODE expect: ',
               test.expect.code
             );
-            // console.log(
-            //   'MESSAGE: ',
-            //   res.body.message,
-            //   '| MESSAGE expect: ',
-            //   test.expect.message
-            // );
+            console.log(
+              'MESSAGE: ',
+              res.body.message,
+              '| MESSAGE expect: ',
+              test.expect.message
+            );
             checkHeaders(res, test.expect.status);
-            // res.status.should.be.equal(test.expect.code);
-            // res.body.message.should.be.equal(test.expect.message);
+            res.body.code.should.be.equal(test.expect.code);
+            res.body.message.should.be.equal(test.expect.message);
             done();
           });
       });
