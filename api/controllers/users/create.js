@@ -5,8 +5,16 @@
  * @param {*} res
  */
 module.exports = async (req, res) => {
-  let createUsers = {
-    creado: 'lol'
+  let { name, lastName, email, password, phone, role, status } = req.body;
+  const createUser = {
+    ...{ name },
+    ...{ lastName },
+    ...{ email },
+    ...{ phone },
+    ...{ password },
+    ...(role && { role }),
+    ...(status && { status })
   };
-  return res.ok(createUsers);
+  const createdUser = await Users.create(createUser).fetch(); //NOSONAR
+  return res.ok(createdUser);
 };

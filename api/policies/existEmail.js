@@ -7,5 +7,16 @@
  *
  */
 module.exports = async (req, res, next) => {
+  const email = await Users.findOne({
+    email: req.body.email
+  });
+  if (email) {
+    return res.badRequest(
+      {},
+      {
+        message: 'The email is already registered.'
+      }
+    );
+  }
   return next();
 };

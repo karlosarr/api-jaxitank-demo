@@ -5,8 +5,17 @@
  * @param {*} res
  */
 module.exports = async (req, res) => {
-  let createUsers = {
-    actualizar: 'lol'
+  let { id, name, lastName, password, phone, role, status } = req.body;
+  const updateUser = {
+    ...(name && { name }),
+    ...(lastName && { lastName }),
+    ...(phone && { phone }),
+    ...(password && { password }),
+    ...(role && { role }),
+    ...(status && { status })
   };
-  return res.ok(createUsers);
+  const updatedUser = await Users.update(id)
+    .set(updateUser)
+    .fetch(); //NOSONAR
+  return res.ok(updatedUser);
 };

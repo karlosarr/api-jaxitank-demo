@@ -5,8 +5,9 @@
  * @param {*} res
  */
 module.exports = async (req, res) => {
-  let createUsers = {
-    borrado: 'lol'
-  };
-  return res.ok(createUsers);
+  let { id } = req.body;
+  const destroyedUser = await Users.archive({
+    id
+  }).fetch();
+  return res.ok(destroyedUser);
 };

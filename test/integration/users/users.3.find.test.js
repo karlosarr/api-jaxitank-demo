@@ -1,15 +1,14 @@
 const path = '/users';
-const tests = require('./providers/create.js');
+const tests = require('./providers/find.js');
 
-describe('Events API', () => {
-  describe('Creating', () => {
+describe('Users API 👥', () => {
+  describe('Finding 🔍 ', () => {
     tests.data.forEach(test => {
       it(test.title, done => {
         chai
           .request(server)
-          .post(path)
-          // .set("id", callId)
-          .send(test.data)
+          .get(path)
+          .query(test.query)
           .end((err, res) => {
             if (err) {
               console.error(err);

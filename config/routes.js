@@ -23,11 +23,14 @@ module.exports.routes = {
   'POST /users': {
     action: 'users/create'
   },
+  'POST /users/login': {
+    action: 'users/login'
+  },
   'PATCH /users': {
     action: 'users/update'
   },
-  'GET /users': 'UsersController.findOne',
-  'GET /users/:id': {
+  'GET /users/:id': 'UsersController.findOne',
+  'GET /users': {
     action: 'users/find'
   },
   'DELETE /users': {

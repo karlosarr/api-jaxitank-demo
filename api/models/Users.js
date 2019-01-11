@@ -4,10 +4,14 @@
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-
+const bcrypt = require('bcrypt');
 module.exports = {
   attributes: {
     name: {
+      type: 'string',
+      required: true
+    },
+    lastName: {
       type: 'string',
       required: true
     },
@@ -32,8 +36,25 @@ module.exports = {
     },
     role: {
       type: 'string',
-      defaultsTo: 'Pending',
-      isIn: ['Guest', 'Member', 'Staff']
+      defaultsTo: 'Guest',
+      isIn: ['Guest', 'Member', 'Staff', 'Administrator']
+    },
+    password: {
+      type: 'string',
+      required: true
+    }
+  },
+  beforeCreate: (user, next) => {
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+    return next(false, user);
+  },
+
+  beforeUpdate: (user, next) => {
+    if (user.hasOwnProperty('password')) {
+      user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+      return next(false, user);
+    } else {
+      return next(null, user);
     }
   }
 };

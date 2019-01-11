@@ -19,8 +19,11 @@ module.exports.policies = {
   '*': false,
   UsersController: {
     '*': false,
-    create: ['users/create'],
-    update: ['users/update'],
-    destroy: ['users/destroy']
+    create: ['users/create', 'existEmail'],
+    findOne: ['users/findOne'],
+    find: ['users/find'],
+    update: ['users/findOne', 'users/update'],
+    destroy: ['users/findOne'],
+    login: ['users/login']
   }
 };
