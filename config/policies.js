@@ -25,5 +25,13 @@ module.exports.policies = {
     update: ['users/findOne', 'users/update'],
     destroy: ['users/findOne'],
     login: ['users/login']
+  },
+  TasksController: {
+    '*': false,
+    create: ['tasks/create', 'users/findOne'],
+    findOne: ['tasks/findOne'],
+    find: ['tasks/find'],
+    update: ['tasks/findOne', 'tasks/update'],
+    destroy: ['tasks/findOne']
   }
 };

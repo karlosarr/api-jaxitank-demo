@@ -28,10 +28,7 @@ module.exports = {
       type: 'string',
       required: true,
       custom: function(value) {
-        return (
-          (_.isString(value) && value.length >= 10 && value.length <= 15) ||
-          value.length === 32
-        );
+        return _.isString(value) && value.length >= 10 && value.length <= 15;
       }
     },
     role: {

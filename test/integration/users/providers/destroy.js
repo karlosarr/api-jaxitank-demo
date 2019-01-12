@@ -7,7 +7,7 @@ module.exports = {
     },
     {
       title: '✔️  👤 Should delete a user',
-      id: '5c37c8f729329e2029703743',
+      id: '5c38f9cae563fc15950398b5',
       expect: expect200()
     }
   ]

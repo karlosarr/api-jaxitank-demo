@@ -8,18 +8,17 @@
  */
 module.exports = async (req, res, next) => {
   req.body = req.allParams();
-  const id = req.body.id ? req.body.id : req.body.idUser;
-  const user = await Users.findOne({
-    id
+  const task = await Tasks.findOne({
+    id: req.body.id
   });
-  if (!user) {
+  if (!task) {
     return res.badRequest(
       {},
       {
-        message: 'The user not exist.'
+        message: 'The task not exist.'
       }
     );
   }
-  req.body.user = user;
+  req.body.task = task;
   return next();
 };

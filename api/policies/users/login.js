@@ -34,7 +34,8 @@ module.exports = async (req, res, next) => {
     );
   }
   const user = await Users.findOne({
-    email: req.body.email
+    email: req.body.email,
+    status: 'Active'
   });
   if (!user) {
     return res.badRequest(
